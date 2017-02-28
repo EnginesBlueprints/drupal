@@ -14,7 +14,7 @@
         "level": "alpha",
         "patch": 0
       },
-      "timestamp": "2017-02-28 07:51:59 UTC"
+      "timestamp": "2017-02-28T07:51:59+00:00"
     },
     "software": {
       "display": {
@@ -132,11 +132,11 @@
     ],
     "installed_packages": [
       {
-        "name": "drupal-8.2.4.tar.gz",
-        "source_url": "https://ftp.drupal.org/files/projects/drupal-8.2.4.tar.gz",
+        "name": "drupal-8.2.6.tar.gz",
+        "source_url": "https://ftp.drupal.org/files/projects/drupal-8.2.6.tar.gz",
         "destination": "./",
         "extraction_command": "tar -xzpf",
-        "path_to_extracted": "drupal-8.2.4"
+        "path_to_extracted": "drupal-8.2.6"
       }
     ],
     "system_packages": [
