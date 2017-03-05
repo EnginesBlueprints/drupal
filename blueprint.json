@@ -1,5 +1,6 @@
 {
   "schema": {
+    "type": "app_blueprint",
     "version": {
       "major": 1,
       "minor": 0
@@ -14,7 +15,7 @@
         "level": "alpha",
         "patch": 0
       },
-      "timestamp": "2017-02-28T07:51:59+00:00"
+      "timestamp": null
     },
     "software": {
       "display": {
@@ -35,17 +36,20 @@
       "name": "drupal",
       "framework": "apache_php",
       "memory": {
-        "required": "128",
-        "recommended": "192"
+        "required": 128,
+        "recommended": 192
       },
       "http_protocol": "https_and_http",
-      "framework_port_override": "0",
+      "framework_port_override": 0,
       "deployment_type": "web",
       "web_root_directory": "",
       "continuous_deployment": false,
       "first_run_url": "",
       "installation_report": "** Goto [_Engines_Builder(http_protocol)://_Engines_Builder(fqdn)/](_Engines_Builder(http_protocol)://_Engines_Builder(fqdn)/) **\r\n\r\nChoose language\r\nSave and continue\r\n\r\n\r\nSelect install type (standard install recommended)\r\nSave and continue\r\n\r\nFill out the form with the following fields:\r\n\r\n**Database name**:_Engines_Environment(dbname)\r\n**Database username**:_Engines_Environment(dbuser)\r\n**Database password**:_Engines_Environment(dbpasswd)\r\n click advance options\r\n**Host:**:_Engines_Environment(dbhost)\r\nSave and continue\r\n\r\n**Site information**\r\nFill out the  required information\r\nMake sure you remember or write down the account username and password chosen\r\n\r\nOnce installed goto the engines management control panel click on _Engines_Builder(engine_name) and restart. This will set the permissions to secure the installation.\r\n"
     },
+    "ports": [
+
+    ],
     "scripts": {
       "start": {
         "language": "sh",
@@ -57,31 +61,38 @@
       },
       "post_install": {
         "language": "sh",
-        "content": "#!/bin/bash\r\n /home/engines/scripts/revoke_rw_access.sh app/sites/default/settings.php \r\n"
+        "content": "#!/bin/bash\r\n \r\ncat /home/app/trusted_host_security_setting >> app/sites/default/settings.php \r\n\r\n/home/engines/scripts/revoke_rw_access.sh app/sites/default/settings.php "
       },
       "shutdown": {
         "language": "sh",
         "content": ""
       }
     },
-    "database_seed": {
-      "language": "text",
-      "content": "",
-      "script": false
-    },
-    "components": {
-      "sources": [
+    "external_repositories": [
 
-      ],
-      "path": "",
-      "extract": false
-    },
-    "persistent_directories": [
+    ],
+    "system_packages": [
+
+    ],
+    "installed_packages": [
       {
-        "path": "app/sites/default/files "
+        "name": "drupal-8.2.6.tar.gz",
+        "source_url": "https://ftp.drupal.org/files/projects/drupal-8.2.6.tar.gz",
+        "destination": "./",
+        "extraction_command": "tar -xzpf",
+        "path_to_extracted": "drupal-8.2.6"
+      }
+    ],
+    "required_modules": [
+      {
+        "name": "rewrite",
+        "type": "apache",
+        "os_package": ""
       },
       {
-        "path": "app/modules"
+        "name": "uploadprogress",
+        "type": "pecl",
+        "os_package": ""
       }
     ],
     "service_configurations": [
@@ -124,24 +135,48 @@
         }
       }
     ],
+    "environment_variables": [
+
+    ],
+    "template_files": [
+      {
+        "path": "/home/app/trusted_host_security_setting",
+        "language": "text",
+        "content": "$settings['trusted_host_patterns'] = array(\r\n  '^_Engines_Builder(fqdn)$',\r\n);\r\n"
+      }
+    ],
     "replacement_strings": [
 
+    ],
+    "database_seed": {
+      "language": "text",
+      "content": "",
+      "script": false
+    },
+    "file_write_permissions": [
+      {
+        "path": "sites/default/settings.php",
+        "recursive": false
+      }
+    ],
+    "persistent_directories": [
+      {
+        "path": "app/sites/default/"
+      },
+      {
+        "path": "app/modules"
+      }
     ],
     "persistent_files": [
 
     ],
-    "installed_packages": [
-      {
-        "name": "drupal-8.2.6.tar.gz",
-        "source_url": "https://ftp.drupal.org/files/projects/drupal-8.2.6.tar.gz",
-        "destination": "./",
-        "extraction_command": "tar -xzpf",
-        "path_to_extracted": "drupal-8.2.6"
-      }
-    ],
-    "system_packages": [
+    "components": {
+      "sources": [
 
-    ],
+      ],
+      "path": "",
+      "extract": false
+    },
     "workers": {
       "blocking": "",
       "commands": [
@@ -150,15 +185,6 @@
     },
     "rake_tasks": [
 
-    ],
-    "template_files": [
-
-    ],
-    "file_write_permissions": [
-      {
-        "path": "sites/default/settings.php",
-        "recursive": false
-      }
     ],
     "custom_php_inis": [
       {
@@ -171,23 +197,10 @@
     "apache_httpd_configurations": [
 
     ],
-    "required_modules": [
-      {
-        "name": "rewrite",
-        "type": "apache",
-        "os_package": ""
-      }
-    ],
-    "ports": [
-
-    ],
     "actionators": [
 
     ],
-    "external_repositories": [
-
-    ],
-    "environment_variables": [
+    "schedules": [
 
     ]
   }
