@@ -61,7 +61,7 @@
       },
       "post_install": {
         "language": "sh",
-        "content": "#!/bin/bash\r\n \r\ncat /home/app/trusted_host_security_setting >> app/sites/default/settings.php \r\n\r\n/home/engines/scripts/revoke_rw_access.sh app/sites/default/settings.php "
+        "content": "#!/bin/bash\r\n \r\ncat /home/app/trusted_host_security_setting >> /home/app/sites/default/settings.php \r\n\r\n/home/engines/scripts/revoke_rw_access.sh app/sites/default/settings.php "
       },
       "shutdown": {
         "language": "sh",
