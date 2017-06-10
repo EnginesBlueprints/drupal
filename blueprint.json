@@ -25,7 +25,7 @@
         "label": "GPL v2"
       }
     },
-    "timestamp": "2017-05-22 21:44:53 UTC"
+    "timestamp": "2017-06-10 23:59:07 UTC"
   },
   "software": {
     "base": {
@@ -49,7 +49,7 @@
       },
       "post_install": {
         "language": "sh",
-        "content": "#!/bin/bash\r\n \r\ncat /home/app/trusted_host_security_setting >> /home/app/sites/default/settings.php \r\n\r\n/home/engines/scripts/revoke_rw_access.sh app/sites/default/settings.php "
+        "content": "#!/bin/bash\r\n \r\ncat /home/app/trusted_host_security_setting >> /home/app/sites/default/settings.php \r\n/home/engines/scripts/revoke_rw_access.sh app/sites/default/settings.php "
       },
       "shutdown": {
         "language": "sh"
@@ -58,7 +58,7 @@
     "installed_packages": [
       {
         "name": "drupal-8.2.6.tar.gz",
-        "source": "https://ftp.drupal.org/files/projects/drupal-8.2.6.tar.gz",
+        "source_url": "https://ftp.drupal.org/files/projects/drupal-8.2.6.tar.gz",
         "destination": "./",
         "extraction_command": "tar -xzpf",
         "path_to_extracted": "drupal-8.2.6"
