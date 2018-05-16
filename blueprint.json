@@ -2,8 +2,8 @@
   "schema": {
     "type": "app_blueprint",
     "version": {
-      "major": 1,
-      "minor": 0
+      "major": 0,
+      "minor": 1
     },
     "origin": "Engines Developer Studio 0.2"
   },
@@ -25,7 +25,7 @@
         "label": "GPL v2"
       }
     },
-    "timestamp": "2017-06-10 23:59:07 UTC"
+    "timestamp": "2018-05-16T16:38:47+10:00"
   },
   "software": {
     "base": {
@@ -75,21 +75,19 @@
         "publisher_namespace": "EnginesSystem",
         "type_path": "database/sql/mysql",
         "variables": {
-          "db_flavor": "mysql2",
-          "db_password": "_Engines_System(random(10))",
-          "collation": "utf8_general_ci",
-          "full_access": "false",
-          "name": "_Engines_Builder(engine_name)",
+          "database_name": "_Engines_Builder(engine_name)",
           "database_host": "_Engines_System(mysql_host)",
           "db_username": "_Engines_Builder(engine_name)",
-          "database_name": "_Engines_Builder(engine_name)"
+          "db_password": "_Engines_System(random(10))",
+          "collation": "utf8_general_ci",
+          "full_access": "false"
         }
       },
       {
         "publisher_namespace": "EnginesSystem",
         "type_path": "filesystem/local/filesystem",
         "variables": {
-          "service_name": "_Engines_Builder(engine_name)",
+          "service_name": "data",
           "volume_src": "",
           "engine_path": "/home/fs/data",
           "permissions": "rw",
@@ -127,10 +125,12 @@
     ],
     "persistent_directories": [
       {
-        "path": "app/sites/default/"
+        "path": "app/sites/default/",
+        "volume_name": "data"
       },
       {
-        "path": "app/modules"
+        "path": "app/modules",
+        "volume_name": "data"
       }
     ],
     "framework_specific": {
