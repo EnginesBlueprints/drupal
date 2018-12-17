@@ -25,7 +25,7 @@
         "label": "GPL v2"
       }
     },
-    "timestamp": "2018-05-16T16:38:47+10:00"
+    "timestamp": "2018-12-17T15:22:03+11:00"
   },
   "software": {
     "base": {
@@ -57,11 +57,12 @@
     },
     "installed_packages": [
       {
-        "name": "drupal-8.2.6.tar.gz",
-        "source_url": "https://ftp.drupal.org/files/projects/drupal-8.2.6.tar.gz",
+        "name": "drupal-8.6.4.tar.gz",
+        "download_type": "http(s)",
+        "source_url": "https://ftp.drupal.org/files/projects/drupal-8.6.4.tar.gz",
         "destination": "./",
         "extraction_command": "tar -xzpf",
-        "path_to_extracted": "drupal-8.2.6"
+        "path_to_extracted": "drupal-8.6.4"
       }
     ],
     "required_modules": [
