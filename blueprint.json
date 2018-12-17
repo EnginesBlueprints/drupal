@@ -25,7 +25,7 @@
         "label": "GPL v2"
       }
     },
-    "timestamp": "2018-12-17T15:36:04+11:00"
+    "timestamp": "2018-12-17T15:36:48+11:00"
   },
   "software": {
     "base": {
@@ -94,6 +94,18 @@
           "permissions": "rw",
           "user": "_Engines_Builder(data_uid)",
           "group": "_Engines_Builder(data_gid)"
+        }
+      },
+      {
+        "publisher_namespace": "EnginesSystem",
+        "type_path": "ftp",
+        "variables": {
+          "folder": "/",
+          "volume": "_Engines_Environment(volume_name)",
+          "username": "_Engines_System(service_account())",
+          "password": "_Engines_Builder(service_password(8))",
+          "rw_access": "true",
+          "ftp_gid": "_Engines_Builder(data_gid)"
         }
       }
     ],
